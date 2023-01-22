@@ -9,6 +9,8 @@ public class MainFunction {
 			System.out.println("Select one of the options:");
 			System.out.println("1.Fetch Artical Data");
 			System.out.println("2.Fetch Section Data");
+			System.out.println("3.Fetch Authors Data");
+			
 			System.out.println("****************************************************");
 			
 		}
