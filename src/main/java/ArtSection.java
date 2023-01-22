@@ -7,6 +7,14 @@ public class ArtSection {
 	private String  last_updated;
 	private String  num_results;
 	Results[] results;
+	Response response;
+	
+	public Response getResponse() {
+		return response;
+	}
+	public void setResponse(Response response) {
+		this.response = response;
+	}
 	public String getStatus() {
 		return status;
 	}

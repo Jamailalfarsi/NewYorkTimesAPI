@@ -1,4 +1,4 @@
-import java.beans.Statement;
+
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -7,6 +7,7 @@ import java.net.http.HttpResponse;
 import java.sql.Connection;
 import java.sql.Driver;
 import java.sql.DriverManager;
+import java.sql.Statement;
 
 import com.google.gson.Gson;
 
@@ -37,41 +38,44 @@ public class Artical {
 		        
 		        Gson gsonObject1=new Gson();
 		    
-		        Response[] fetchGson=gsonObject1.fromJson(response.body(),Response [].class);
-	        
-		       for ( Response varaiblex:fetchGson) {
-		    	 System.out.println("The getPub_date is:"+varaiblex.getPub_date());
-		    	 System.out.println("The getSection_name is:"+varaiblex.getSection_name());
-		    	 System.out.println("The get_id is:"+varaiblex.get_id());
-		    	  
-		    	   
-		    	   
+		        ArtSection fetchGson=gsonObject1.fromJson(response.body(),ArtSection.class);
+		        
+		         
+		         for(int i=0;i<response.body().length();i++) {
+		    	
+		        System.out.println("The Pub_date is:"+fetchGson.getResponse().getDocs()[i].getPub_date());
+		        System.out.println("The Document_type is:"+fetchGson.getResponse().getDocs()[i].getDocument_type());
+		        System.out.println("The Section_name is:"+fetchGson.getResponse().getDocs()[i].getSection_name());
+		        System.out.println("The Uri is:"+fetchGson.getResponse().getDocs()[i].getUri());
+		    	
 	    	   // Inserting data using SQL query
-		    	 String sql = "insert into  articles (Pub_date,Section_name,_id)values('"+varaiblex.getPub_date()+"','"+varaiblex.getSection_name()+"','"+varaiblex.get_id()+"')"; 
-			       
+		    	 String sql = "insert into artical (Pub_date,Document_type,Section_name,Uri)values('"+fetchGson.getResponse().getDocs()[i].getPub_date()+"','"+fetchGson.getResponse().getDocs()[i].getDocument_type()+"','"+fetchGson.getResponse().getDocs()[i].getSection_name()+"','"+fetchGson.getResponse().getDocs()[i].getUri()+"')"; 
+		         
+		    	   System.out.println("__________________________________");
 			       System.out.println(sql);
+			       System.out.println("__________________________________");
 			       // Connection class object
 			        Connection con = null;
 
 			        // Try block to check for exceptions
 			        try {
 
-			            Driver driver = (Driver) Class.forName("com.mysql.jdbc.Driver").newInstance();
+			            Driver driver = (Driver) Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
 			            // Registering drivers
 			            DriverManager.registerDriver(driver);
 
 		            // Reference to connection interface
-			            con = DriverManager.getConnection(url, user,
-		                    pass);
+		            con = DriverManager.getConnection(url, user,
+	                    pass);
 
 			            // Creating a statement
-			            Statement st = (Statement) con.createStatement();
+			            Statement st = con.createStatement();
 
 			            // Executing query
-			            int m = ((java.sql.Statement) st).executeUpdate(sql);
+			            int m = st.executeUpdate(sql);
 			           if (m >=  1)
-			               System.out.println(
-			                        "inserted successfully : " + sql);
+		               System.out.println(
+		                        "inserted successfully : " + sql);
 		           else
 			                System.out.println("insertion failed");
 
@@ -80,15 +84,16 @@ public class Artical {
 			        }
 
 		        // Catch block to handle exceptions
-		        catch (Exception ex) {
+	        catch (Exception ex) {
 		            System.err.println(ex);
-		        }
-		       }
+	        }
 		       
-		        
-		        
+		       
+	
+	             
 		   
 	} 
+	}
 		        
 }
 

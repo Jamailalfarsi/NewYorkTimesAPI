@@ -1,7 +1,17 @@
 
 public class Response {
 
-	private String docs[];
+	Docs[] docs;
+
+	public Docs[] getDocs() {
+		return docs;
+	}
+
+	public void setDocs(Docs[] docs) {
+		this.docs = docs;
+	}
+	
+		
 	
 
 }
