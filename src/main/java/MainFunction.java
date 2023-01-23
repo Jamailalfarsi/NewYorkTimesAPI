@@ -46,8 +46,9 @@ public class MainFunction {
 					
 					break;
 					
-				
-					
+				case 3:
+					authors authorsobj=new authors();
+					authorsobj.getDataAuthors();
 	    
 	            
 			}

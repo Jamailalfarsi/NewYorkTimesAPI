@@ -8,6 +8,9 @@ public class Results {
 	private String created_date;
 	private String published_date;
 	
+	
+
+	
 	public String getSection() {
 		return section;
 	}
