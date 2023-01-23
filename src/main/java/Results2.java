@@ -4,15 +4,6 @@ public class Results2 {
 	private String published_date;
 	private String previous_published_date;
 	private String published_date_description;
-	private String next_published_date;
-	public String getNext_published_date() {
-		return next_published_date;
-	}
-
-	public void setNext_published_date(String next_published_date) {
-		this.next_published_date = next_published_date;
-	}
-
 	private Books[] books;
     
 	private String display_name;

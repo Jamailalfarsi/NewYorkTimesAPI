@@ -36,11 +36,11 @@ public class authors {
 		        Gson gsonObject1=new Gson();
 		    
 		        AuthorsMain fetchGson=gsonObject1.fromJson(response.body(),AuthorsMain.class);
-		        
+		        int x = fetchGson.getResults().getBooks().length;
 	         
-		         for(int i=0;i<response.body().length();i++) {
+		         for(int i=0;i<x;i++) {
 		    	 System.out.println("The Display_name is:"+fetchGson.getResults().getDisplay_name());
-		    	 System.out.println("The Next_published_date is:"+fetchGson.getResults().getNext_published_date());
+		    	 System.out.println("The published_date is:"+fetchGson.getResults().getPublished_date());
 		    	 System.out.println("The Previous_published_date is:"+fetchGson.getResults().getPrevious_published_date());
 		    	 System.out.println("The Published_date_description is:"+fetchGson.getResults().getPublished_date_description());
 		    	 System.out.println("The Author Name is:"+fetchGson.getResults().getBooks()[i].getAuthor());
@@ -48,13 +48,10 @@ public class authors {
 		    	 System.out.println("The Title is:"+fetchGson.getResults().getBooks()[i].getTitle());
 		    	 
 		    	 
-		    	 
-	           
-		        
 		    	
 	    	   // Inserting data using SQL query
-		    	 String sql = "insert into authors (Display_name,Next_published_date,Previous_published_date,Published_date_description,Author,Publisher,Title)"
-		    	 		+ "values('"+fetchGson.getResults().getDisplay_name()+"','"+fetchGson.getResults().getNext_published_date()+"','"+fetchGson.getResults().getPrevious_published_date()+"','"+fetchGson.getResults().getPublished_date_description()+"','"
+		    	 String sql = "insert into authors (Display_name,published_date,Previous_published_date,Published_date_description,Author,Publisher,Title)"
+		    	 		+ "values('"+fetchGson.getResults().getDisplay_name()+"','"+fetchGson.getResults().getPublished_date()+"','"+fetchGson.getResults().getPrevious_published_date()+"','"+fetchGson.getResults().getPublished_date_description()+"','"
 		    			 +fetchGson.getResults().getBooks()[i].getAuthor()+"','"+fetchGson.getResults().getBooks()[i].getPublisher()+"','"+fetchGson.getResults().getBooks()[i].getTitle()+"')"; 
 		         
 		    	   System.out.println("__________________________________");
