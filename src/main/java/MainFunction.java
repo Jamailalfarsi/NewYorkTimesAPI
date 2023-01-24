@@ -10,8 +10,8 @@ public class MainFunction {
 			System.out.println("1.Fetch and insert Artical Data");
 			System.out.println("2.Fetch and insert Section Data");
 			System.out.println("3.Fetch and insert Authors Data");
-			System.out.println("4.Add section_id for Artical Table");
-			System.out.println("5.Add author_id for Artical Table");
+			System.out.println("4.Add Column(section_id)Artical Table");
+			System.out.println("5.Add Column(author_id)Artical Table");
 			
 			System.out.println("****************************************************");
 			
