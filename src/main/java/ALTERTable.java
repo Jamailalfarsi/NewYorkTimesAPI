@@ -33,9 +33,6 @@ public class ALTERTable {
 		        String user = "root";
 		        String pass = "root";
 		        
-		        //Gson gsonObject1=new Gson();
-		    
-		       // ArtSection fetchGson=gsonObject1.fromJson(response.body(),ArtSection.class);
 		        
 		
 	    	   // Inserting data using SQL query
@@ -104,11 +101,7 @@ public class ALTERTable {
 		        String user = "root";
 		        String pass = "root";
 		        
-		        //Gson gsonObject1=new Gson();
-		    
-		       // ArtSection fetchGson=gsonObject1.fromJson(response.body(),ArtSection.class);
 		        
-		
 	    	   // Inserting data using SQL query
 		    	 String sql = "ALTER TABLE artical ADD Column author_id int";
 		    	 
