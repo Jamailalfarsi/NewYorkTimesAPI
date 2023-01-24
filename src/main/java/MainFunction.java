@@ -7,9 +7,11 @@ public class MainFunction {
 			
 			System.out.println("****************************************************");
 			System.out.println("Select one of the options:");
-			System.out.println("1.Fetch Artical Data");
-			System.out.println("2.Fetch Section Data");
-			System.out.println("3.Fetch Authors Data");
+			System.out.println("1.Fetch and insert Artical Data");
+			System.out.println("2.Fetch and insert Section Data");
+			System.out.println("3.Fetch and insert Authors Data");
+			System.out.println("4.Add section_id for Artical Table");
+			System.out.println("5.Add author_id for Artical Table");
 			
 			System.out.println("****************************************************");
 			
@@ -49,7 +51,13 @@ public class MainFunction {
 				case 3:
 					authors authorsobj=new authors();
 					authorsobj.getDataAuthors();
-	    
+				case 4:
+					ALTERTable alterTableObj=new ALTERTable();
+					alterTableObj.ALTERTableFunction() ;
+					
+				case 5:
+					ALTERTable alterTableObj2=new ALTERTable();
+					alterTableObj2.ALTERTableFunction2() ;
 	            
 			}
 				}while(true);
