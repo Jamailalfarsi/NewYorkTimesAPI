@@ -1,4 +1,3 @@
-
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -7,15 +6,13 @@ import java.net.http.HttpResponse;
 import java.sql.Connection;
 import java.sql.Driver;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.Date;
 
-import com.google.gson.Gson;
+public class Published {
 
-
-
-public class Artical {
-
-	public static void getData() throws IOException, InterruptedException {
+	public static void PublishedYear() throws IOException, InterruptedException {
 		 String jsonUrl = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=election&api-key=UBt6ezvwrwG4h1E0UUlLv9BkrBJ4PImA";
 		 		
 		        HttpClient client = HttpClient.newHttpClient();
@@ -24,7 +21,7 @@ public class Artical {
 		                .build();
 		        HttpResponse<String> response = client.send(request,
 		                HttpResponse.BodyHandlers.ofString());
-		    //  System.out.println("The JSON of the API is :" +ArtSection.body());
+		      // System.out.println("The JSON of the API is :" +Atributies.body());
 		        
 		       
 		     // Creating the connection using Oracle DB
@@ -36,21 +33,11 @@ public class Artical {
 		        String user = "root";
 		        String pass = "root";
 		        
-		        Gson gsonObject1=new Gson();
-		    
-		        ArtSection fetchGson=gsonObject1.fromJson(response.body(),ArtSection.class);
-		        int x=fetchGson.getResponse().getDocs().length;
-		         
-		         for(int i=0;i<x;i++) {
-		    	
-		        System.out.println("The Pub_date is:"+fetchGson.getResponse().getDocs()[i].getPub_date());
-		        System.out.println("The Document_type is:"+fetchGson.getResponse().getDocs()[i].getDocument_type());
-		        System.out.println("The Section_name is:"+fetchGson.getResponse().getDocs()[i].getSection_name());
-		        System.out.println("The Uri is:"+fetchGson.getResponse().getDocs()[i].getUri());
-		    	
+		        
+		
 	    	   // Inserting data using SQL query
-		    	 String sql = "insert into artical (Pub_date,Document_type,Section_name,Uri)values('"+fetchGson.getResponse().getDocs()[i].getPub_date()+"','"+fetchGson.getResponse().getDocs()[i].getDocument_type()+"','"+fetchGson.getResponse().getDocs()[i].getSection_name()+"','"+fetchGson.getResponse().getDocs()[i].getUri()+"')"; 
-		         
+		    	 String sql = "Select*from artical where Pub_date between '2021-01-01' AND '2021-12-12'";
+		    	 
 		    	   System.out.println("__________________________________");
 			       System.out.println(sql);
 			       System.out.println("__________________________________");
@@ -75,9 +62,9 @@ public class Artical {
 			            int m = st.executeUpdate(sql);
 			           if (m >=  1)
 		               System.out.println(
-		                        "inserted successfully : " + sql);
+		                        " successfully : " + sql);
 		           else
-			                System.out.println("insertion failed");
+			                System.out.println("failed");
 
 			            // Closing the connections
 			            con.close();
@@ -89,13 +76,10 @@ public class Artical {
 	        }
 		       
 		       
-	
+			        
 	             
-		   
-	} 
+			        }   
+	
 	}
-		        
-}
-
 
 

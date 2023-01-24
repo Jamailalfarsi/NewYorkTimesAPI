@@ -12,6 +12,7 @@ public class MainFunction {
 			System.out.println("3.Fetch and insert Authors Data");
 			System.out.println("4.Add Column(section_id)Artical Table");
 			System.out.println("5.Add Column(author_id)Artical Table");
+			System.out.println("6:articles were published each month in the year 2021");
 			
 			System.out.println("****************************************************");
 			
@@ -58,7 +59,10 @@ public class MainFunction {
 				case 5:
 					ALTERTable alterTableObj2=new ALTERTable();
 					alterTableObj2.ALTERTableFunction2() ;
-	            
+					
+				case 6:
+					Published Publishedobj=new Published();
+					Publishedobj.PublishedYear();
 			}
 				}while(true);
 

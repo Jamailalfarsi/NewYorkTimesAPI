@@ -39,7 +39,7 @@ public class Section {
 		        ArtSection fetchGson=gsonObject1.fromJson(response.body(),ArtSection.class);
 		        
 	         
-		         for(int i=0;i<response.body().length();i++) {
+		         for(int i=0;i<fetchGson.getResults().length;i++) {
 		    	 System.out.println("The Section is:"+fetchGson.getSection());
 		    	 System.out.println("The Copyright is:"+fetchGson.getCopyright());
 		    	 System.out.println("The updated_date is:"+fetchGson.getResults()[i].getPublished_date());
